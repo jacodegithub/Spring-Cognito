@@ -15,20 +15,38 @@ public class SimpleController {
 	@Autowired
 	private CognitoService cogService;
 	
+	@Autowired
+	private AwsCognitoIdTokenProcessor awsTokenProcessor;
+	
+	@GetMapping("/permit")
+	public String permittingEveryone() {
+		return "Permit All is Working";
+	}
+	
+	
     @GetMapping(path = "/api/hello")
     public String getResp(){
         return  "Hey authenticated request!";
     }
 
-    @GetMapping("/")
-    public String permitAll() {
-    	return "Permit All is Working";
-    }
     
     @PostMapping(value = "/admin/greetMe", consumes = MediaType.APPLICATION_JSON_VALUE) 
     public ResponseEntity<String> greetingAdmin(@RequestBody User user) {
     	
     	return ResponseEntity.ok("Hello, ADMIN! How do you do? "+user.getUsername()+" "+user.getEmail());
+    }
+    @GetMapping(value = "/user/greetMe"	) 
+    public ResponseEntity<String> greetingAdmin() {
+    	
+    	return ResponseEntity.ok("Hello, USER! How do you do?");
+    }
+    
+    @PostMapping("/login")
+    public String loginPage(@RequestBody User user) {
+    	
+    	awsTokenProcessor.getIdToken(user.getEmail(), user.getPassword());
+    	
+    	return "Successfully logged in";
     }
     
   @PostMapping("/admin/register-user")

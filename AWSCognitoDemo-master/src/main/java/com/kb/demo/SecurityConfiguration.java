@@ -47,7 +47,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.headers().cacheControl();
         http.csrf(csrf -> csrf.disable())
                 .authorizeRequests(requests -> requests
-                        .antMatchers("/").permitAll()
+                        .antMatchers("/permit").permitAll()
+                        .antMatchers("/login").permitAll()
+                        .antMatchers("/user/greetMe").hasAnyRole("ADMIN", "USER")
+                        .antMatchers("/admin/register-user").hasAnyRole("ADMIN")
                         .antMatchers("/api/**").authenticated())
                 .addFilterBefore(awsCognitoJwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .oauth2Login(oauth -> oauth.redirectionEndpoint(endPoint -> endPoint.baseUri("/login/oauth2/code/cognito"))

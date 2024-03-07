@@ -32,7 +32,7 @@ public class DemoApplication {
 		ResourceRetriever resourceRetriever =
 				new DefaultResourceRetriever(jwtConfiguration.getConnectionTimeout(),
 						jwtConfiguration.getReadTimeout());
-						URL jwkSetURL= new URL(jwtConfiguration.getJwkUrl());
+		URL jwkSetURL= new URL(jwtConfiguration.getJwkUrl());
 		JWKSource keySource= new RemoteJWKSet(jwkSetURL, resourceRetriever);
 		ConfigurableJWTProcessor jwtProcessor= new DefaultJWTProcessor();
 		JWSKeySelector keySelector= new JWSVerificationKeySelector(RS256, keySource);

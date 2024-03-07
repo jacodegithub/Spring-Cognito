@@ -98,27 +98,28 @@
             email: email
         }
 
-        // fetch('https://ywnx1gi3hk.execute-api.us-east-1.amazonaws.com/dev/admin/greetMe', {
-        //     method: 'POST',
-        //     mode: 'no-cors',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify(data)
-        // })
-        // .then(response => {
-        //     if(!response.ok) {
-        //         throw new Error("network response not ok")
-        //     }
+        /*fetch('https://ywnx1gi3hk.execute-api.us-east-1.amazonaws.com/dev/admin/greetMe', {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if(!response.ok) {
+                throw new Error("network response not ok")
+            }
 
-        //     console.log('User details submitted successfully');
-        //     document.getElementById('username').value = ''
-        //     document.getElementById('password').value = ''
-        //     document.getElementById('email').value = ''
-        // })
-        // .catch(error => {
-        //     console.error('There was an internal problem', error);
-        // })
+            console.log('User details submitted successfully');
+            document.getElementById('username').value = ''
+            document.getElementById('password').value = ''
+            document.getElementById('email').value = ''
+        })
+        .catch(error => {
+            console.error('There was an internal problem', error);
+        })
+        */
 
         axios.post("http://localhost:8080/admin/register-user", data)
         .then(response => {

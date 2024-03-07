@@ -84,7 +84,5 @@ public class JwtConfiguration {
         return httpHeader;
     }
 
-    public void setHttpHeader(String httpHeader) {
-        this.httpHeader = httpHeader;
-    }
+   
 }
