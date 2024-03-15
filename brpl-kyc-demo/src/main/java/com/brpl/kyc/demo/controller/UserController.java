@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.brpl.kyc.demo.FileHandling;
 import com.brpl.kyc.demo.model.KYCRequest;
+import com.brpl.kyc.demo.model.KYCUser;
 import com.brpl.kyc.demo.model.User;
 import com.brpl.kyc.demo.repository.KYCRequestRepository;
 import com.brpl.kyc.demo.repository.UserRepository;
@@ -66,8 +67,9 @@ public class UserController {
 		}
 	}
 	
-	@PostMapping("/{userId}/kyc")
-	public ResponseEntity<?> submitKycRequest(@PathVariable Long userId,
+	@PostMapping("/create/kyc")
+	public ResponseEntity<?> submitKycRequest(
+											@RequestBody KYCUser kycUser,
 											@RequestParam("aadharImage") MultipartFile aadharImage,
 											@RequestParam("pancardImage") MultipartFile pancardImage
 										) {
@@ -76,7 +78,7 @@ public class UserController {
 			String afname = handleFile.uploadImage(aadharImage, path);
 			String pfname = handleFile.uploadImage(pancardImage, path);
 			
-			kycService.submitKycRequest(userId, afname, pfname);
+			kycService.submitKycRequest(kycUser, afname, pfname);
 			
 			return ResponseEntity.ok().build();
 		} catch(Exception ex) {

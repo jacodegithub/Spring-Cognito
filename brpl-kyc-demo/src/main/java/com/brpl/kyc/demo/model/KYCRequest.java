@@ -28,6 +28,9 @@ public class KYCRequest {
     @OneToOne
     private User user;
     
+    @OneToOne
+    private KYCUser kycUser;
+    
     @ManyToOne
     private Approver approver;
     
@@ -50,14 +53,6 @@ public class KYCRequest {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
 	}
 
 	public Approver getApprover() {
@@ -94,5 +89,23 @@ public class KYCRequest {
 
 	public void setPancardImage(String pancardImage) {
 		this.pancardImage = pancardImage;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public KYCUser getKycUser() {
+		return kycUser;
+	}
+
+	public void setKycUser(KYCUser kycUser) {
+		this.kycUser = kycUser;
 	}    
+	
+	
 }

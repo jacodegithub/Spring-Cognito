@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.brpl.kyc.demo.controller.UserController;
 import com.brpl.kyc.demo.model.KYCRequest;
+import com.brpl.kyc.demo.model.KYCUser;
 import com.brpl.kyc.demo.model.User;
 import com.brpl.kyc.demo.repository.KYCRequestRepository;
 import com.brpl.kyc.demo.repository.UserRepository;
@@ -26,14 +27,18 @@ public class KYCService {
 	
 	private Logger log = LoggerFactory.getLogger(KYCService.class);
 	
-	public void submitKycRequest(Long userId, String aadharImage, String pancardImage) throws IOException {
-		
-		User user = userRepo.findById(userId).orElseThrow(
-				() -> new RuntimeException("Invalid userid "+userId)
-		);
+	public void submitKycRequest(KYCUser kycUser, String aadharImage, String pancardImage) throws IOException {
+		String email = kycUser.getEmail();
+		User user = null;
+		try {
+			user = userRepo.findByEmail(email);			
+		}catch(Exception ex) {
+			System.out.println("Invalid user emailId "+email);
+		}
 		
 		KYCRequest kycRequest = new KYCRequest();
 		kycRequest.setUser(user);
+		kycRequest.setKycUser(kycUser);
 		kycRequest.setAadharImage(aadharImage);
 		kycRequest.setPancardImage(pancardImage);
 		
