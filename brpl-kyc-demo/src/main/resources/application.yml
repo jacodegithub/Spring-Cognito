@@ -1,0 +1,22 @@
+server:
+  port: 9090
+
+spring:
+  application:
+    name: brpl-kyc-demo
+    
+  datasource:
+    url: jdbc:mysql://localhost:3306/brpl_kyc_data
+    username: root
+    password: Mysql@2023
+    
+  jpa:
+    hibernate:
+      ddl-auto: update
+      
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+      
+upload:
+  image: images/
