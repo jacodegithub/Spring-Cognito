@@ -8,7 +8,11 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/brpl_kyc_data
     username: root
+<<<<<<< HEAD
     password: Mysql@2023
+=======
+    password: Brpl@123
+>>>>>>> b274fc9deaf7ad554f0e75d39cca1376a6ded153
     
   jpa:
     hibernate:
