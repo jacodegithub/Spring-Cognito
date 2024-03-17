@@ -125,6 +125,12 @@ form.addEventListener("submit", function(event) {
       console.log('this is the id', response.data.email);
       console.log('KYC form submitted successfully:', response.data);
 
+
+          if(!email) {
+            console.log("Improper emailId");
+            return
+          }
+
           axios.get(`http://localhost:9090/user/${email}`)
           .then(response => {
               userId = response.data.id;
@@ -132,11 +138,17 @@ form.addEventListener("submit", function(event) {
               console.log('KYC form submitted successfully:', response.data);
 
 
-              let combinedFormData = new FormData();
-              combinedFormData.append("aadhar_image", aadharImage);
-              combinedFormData.append("pan_card_image", pancardImage);
+              if(!userId) {
+                console.log("Improper userId");
+                return
+              }
 
-              axios.post(`http://localhost:9090/${userId}/kyc`, combinedFormData, {
+              let combinedFormData = new FormData();
+              combinedFormData.append("aadharImage", aadharImage);
+              combinedFormData.append("pancardImage", pancardImage);
+
+              console.log(combinedFormData);
+              axios.post(`http://localhost:9090/user/${userId}/kyc`, combinedFormData, {
                 headers: {
                   "Content-Type": "multipart/form-data",
                 },

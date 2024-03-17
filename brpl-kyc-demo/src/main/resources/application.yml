@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: brpl-kyc-demo
+    name: brpl-kyc-demo    
     
   datasource:
     url: jdbc:mysql://localhost:3306/brpl_kyc_data
@@ -17,6 +17,15 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
+        
+  servlet:
+    multipart:
+       max-file-size: 20MB
+       max-request-size: 20MB
+
       
+   
 upload:
   image: images/
+  
+  
