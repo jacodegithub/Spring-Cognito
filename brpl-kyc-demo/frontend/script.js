@@ -131,8 +131,16 @@ form.addEventListener("submit", function(event) {
               console.log('this is the email', response.data);
               console.log('KYC form submitted successfully:', response.data);
 
-console.log(aadharImage, pancardImage);
-              axios.post(`http://localhost:9090/${userId}/kyc?aadharImage=${aadharImage}&pancardImage=${pancardImage}`)
+
+              let combinedFormData = new FormData();
+              combinedFormData.append("aadhar_image", aadharImage);
+              combinedFormData.append("pan_card_image", pancardImage);
+
+              axios.post(`http://localhost:9090/${userId}/kyc`, combinedFormData, {
+                headers: {
+                  "Content-Type": "multipart/form-data",
+                },
+              })
               .then(response => {
                   console.log('Images submitted successfull!!', response.data);
               })

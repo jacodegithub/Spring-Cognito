@@ -21,10 +21,7 @@ import com.brpl.kyc.demo.model.KYCRequest;
 import com.brpl.kyc.demo.model.KYCUser;
 import com.brpl.kyc.demo.model.User;
 import com.brpl.kyc.demo.repository.KYCRequestRepository;
-<<<<<<< HEAD
 import com.brpl.kyc.demo.repository.KYCUserRepository;
-=======
->>>>>>> b274fc9deaf7ad554f0e75d39cca1376a6ded153
 import com.brpl.kyc.demo.repository.UserRepository;
 import com.brpl.kyc.demo.service.KYCService;
 import com.brpl.kyc.demo.service.UserService;
@@ -44,12 +41,9 @@ public class UserController {
 	private FileHandling handleFile;
 	
 	@Autowired
-<<<<<<< HEAD
 	private KYCUserRepository kycUserRepo;
 	
 	@Autowired
-=======
->>>>>>> b274fc9deaf7ad554f0e75d39cca1376a6ded153
 	private UserRepository userRepo;
 	
 	@Autowired
@@ -77,7 +71,6 @@ public class UserController {
 		}
 	}
 	
-<<<<<<< HEAD
 
 	@PostMapping("/kycData")
 	public ResponseEntity<?> creatingUserKycData(@RequestBody KYCUser kyc) {
@@ -93,11 +86,6 @@ public class UserController {
 	
 	@PostMapping("/{userId}/kyc")
 	public ResponseEntity<?> submitKycRequest(@PathVariable Long userId,
-=======
-	@PostMapping("/create/kyc")
-	public ResponseEntity<?> submitKycRequest(
-											@RequestBody KYCUser kycUser,
->>>>>>> b274fc9deaf7ad554f0e75d39cca1376a6ded153
 											@RequestParam("aadharImage") MultipartFile aadharImage,
 											@RequestParam("pancardImage") MultipartFile pancardImage
 										) {
@@ -106,11 +94,7 @@ public class UserController {
 			String afname = handleFile.uploadImage(aadharImage, path);
 			String pfname = handleFile.uploadImage(pancardImage, path);
 			
-<<<<<<< HEAD
 			kycService.submitKycRequest(userId, afname, pfname);
-=======
-			kycService.submitKycRequest(kycUser, afname, pfname);
->>>>>>> b274fc9deaf7ad554f0e75d39cca1376a6ded153
 			
 			return ResponseEntity.ok().build();
 		} catch(Exception ex) {

@@ -28,12 +28,6 @@ public class KYCRequest {
     @OneToOne
     private User user;
     
-<<<<<<< HEAD
-=======
-    @OneToOne
-    private KYCUser kycUser;
-    
->>>>>>> b274fc9deaf7ad554f0e75d39cca1376a6ded153
     @ManyToOne
     private Approver approver;
     
@@ -101,17 +95,5 @@ public class KYCRequest {
 	public void setUser(User user) {
 		this.user = user;
 	}
-<<<<<<< HEAD
-=======
-
-	public KYCUser getKycUser() {
-		return kycUser;
-	}
-
-	public void setKycUser(KYCUser kycUser) {
-		this.kycUser = kycUser;
-	}    
-	
->>>>>>> b274fc9deaf7ad554f0e75d39cca1376a6ded153
 	
 }
