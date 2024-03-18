@@ -3,12 +3,20 @@ server:
 
 spring:
   application:
+<<<<<<< HEAD
     name: brpl-kyc-demo
+=======
+    name: brpl-kyc-demo    
+>>>>>>> c33a3474e4a60fbadbe1fff3ca2005bdd9c2a636
     
   datasource:
     url: jdbc:mysql://localhost:3306/brpl_kyc_data
     username: root
+<<<<<<< HEAD
     password: Brpl@123
+=======
+    password: Mysql@2023
+>>>>>>> c33a3474e4a60fbadbe1fff3ca2005bdd9c2a636
     
   jpa:
     hibernate:
@@ -17,11 +25,16 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> c33a3474e4a60fbadbe1fff3ca2005bdd9c2a636
   servlet:
     multipart:
        max-file-size: 20MB
        max-request-size: 20MB
+<<<<<<< HEAD
       
 upload:
   image: images/
@@ -30,3 +43,12 @@ aws:
   accessKey: "accessKey"
   secretKey: "secretKey"    
   region: "us-east-1"  
+=======
+
+      
+   
+upload:
+  image: images/
+  
+  
+>>>>>>> c33a3474e4a60fbadbe1fff3ca2005bdd9c2a636

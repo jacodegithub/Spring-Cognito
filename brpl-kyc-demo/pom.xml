@@ -47,6 +47,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+<<<<<<< HEAD
 		
 		
 		<!-- FOR AWS S3 --><!-- 
@@ -65,6 +66,8 @@
 		    <version>2.2.6.RELEASE</version>
 		</dependency>
 
+=======
+>>>>>>> c33a3474e4a60fbadbe1fff3ca2005bdd9c2a636
 	</dependencies>
 
 	<build>

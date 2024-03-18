@@ -1,7 +1,10 @@
 package com.brpl.kyc.demo.controller;
 
+<<<<<<< HEAD
 import java.io.IOException;
 
+=======
+>>>>>>> c33a3474e4a60fbadbe1fff3ca2005bdd9c2a636
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +21,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+<<<<<<< HEAD
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
+=======
+>>>>>>> c33a3474e4a60fbadbe1fff3ca2005bdd9c2a636
 import com.brpl.kyc.demo.FileHandling;
 import com.brpl.kyc.demo.model.KYCRequest;
 import com.brpl.kyc.demo.model.KYCUser;
@@ -35,9 +41,12 @@ import com.brpl.kyc.demo.service.UserService;
 @RequestMapping("/user")
 //@CrossOrigin(origins="http://localhost:5500")
 public class UserController {
+<<<<<<< HEAD
 	
     @Autowired
     private AmazonS3 amazonS3Client;
+=======
+>>>>>>> c33a3474e4a60fbadbe1fff3ca2005bdd9c2a636
 
 	@Autowired
 	private KYCService kycService;
@@ -57,6 +66,7 @@ public class UserController {
 	@Autowired
 	private KYCRequestRepository kycRepo;
 	
+<<<<<<< HEAD
 	@Autowired
 	private KYCUserRepository kycUserRepo;
 	
@@ -65,6 +75,11 @@ public class UserController {
 	
 	private static final String BUCKET_NAME = "brpl-aadhar-pan-bucket";
 	
+=======
+	@Value("${upload.image}")
+	private String path;
+	
+>>>>>>> c33a3474e4a60fbadbe1fff3ca2005bdd9c2a636
 	private Logger log = LoggerFactory.getLogger(UserController.class);
 	
 	@GetMapping("/check")
@@ -85,6 +100,10 @@ public class UserController {
 	}
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> c33a3474e4a60fbadbe1fff3ca2005bdd9c2a636
 =======
 
 >>>>>>> c33a3474e4a60fbadbe1fff3ca2005bdd9c2a636
@@ -97,6 +116,7 @@ public class UserController {
 	@GetMapping("/{email}")
 	public ResponseEntity<?> getEmailOfUser(@PathVariable String email) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		User user = null;
 		try {
 			user = userRepo.findByEmail(email);			
@@ -104,6 +124,10 @@ public class UserController {
 		} catch(RuntimeException ex) {
 			return ResponseEntity.badRequest().body("Invalid user emailId: " + ex.getMessage());
 		}
+=======
+		User user = userRepo.findByEmail(email);
+		return ResponseEntity.ok(user);
+>>>>>>> c33a3474e4a60fbadbe1fff3ca2005bdd9c2a636
 =======
 		User user = userRepo.findByEmail(email);
 		return ResponseEntity.ok(user);
@@ -117,6 +141,7 @@ public class UserController {
 										) {
 		
 		try {
+<<<<<<< HEAD
 //			String afname = handleFile.uploadImage(aadharImage, path);
 //			String pfname = handleFile.uploadImage(pancardImage, path);
 			
@@ -129,6 +154,11 @@ public class UserController {
 			
 =======
 >>>>>>> c33a3474e4a60fbadbe1fff3ca2005bdd9c2a636
+=======
+			String afname = handleFile.uploadImage(aadharImage, path);
+			String pfname = handleFile.uploadImage(pancardImage, path);
+			
+>>>>>>> c33a3474e4a60fbadbe1fff3ca2005bdd9c2a636
 			kycService.submitKycRequest(userId, afname, pfname);
 			
 			return ResponseEntity.ok().build();
@@ -137,7 +167,10 @@ public class UserController {
 		}		
 	}
 	
+<<<<<<< HEAD
 	
+=======
+>>>>>>> c33a3474e4a60fbadbe1fff3ca2005bdd9c2a636
 	@GetMapping("/{userId}/getKyc")
 	public ResponseEntity<?> getUserKyc(@PathVariable Long userId) {
 		try {
@@ -149,6 +182,7 @@ public class UserController {
 			return ResponseEntity.badRequest().body("Failed to fetch KYC request: " + ex.getMessage());
 		}
 	}
+<<<<<<< HEAD
 	
 	
     private String uploadToS3(MultipartFile file, String type, Long userId) throws IOException {
@@ -161,4 +195,6 @@ public class UserController {
         return keyName; // Return the S3 key for the uploaded file
     }
 	
+=======
+>>>>>>> c33a3474e4a60fbadbe1fff3ca2005bdd9c2a636
 }
